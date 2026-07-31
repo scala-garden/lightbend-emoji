@@ -31,7 +31,7 @@ libraryDependencies ++= Seq(
   "org.scalameta" %% "munit" % "1.3.4" % Test,
 )
 
-scalacOptions ++= Seq("-release:8", "-unchecked", "-deprecation", "-feature", "-Xfatal-warnings") ++ (
+scalacOptions ++= Seq("-release:8", "-unchecked", "-deprecation", "-feature", "-Werror") ++ (
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, _)) => Seq("-Xlint")
     case _            => Seq.empty
@@ -41,12 +41,12 @@ scalacOptions ++= Seq("-release:8", "-unchecked", "-deprecation", "-feature", "-
 Compile / console / scalacOptions ~=
   (_ filterNot Set(
     "-Xlint",
-    "-Xfatal-warnings"
+    "-Werror"
   ))
 
 Test / scalacOptions ~=
   (_ filterNot Set(
-    "-Xfatal-warnings"
+    "-Werror"
   ))
 
 console / initialCommands := {
