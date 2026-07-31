@@ -58,4 +58,10 @@ console / initialCommands := {
 
 /// MiMa
 
+import com.typesafe.tools.mima.core._, ProblemFilters._
 mimaPreviousArtifacts := Set(organization.value %% name.value % "1.3.0")
+// this can be removed once the reference version is bumped
+mimaBinaryIssueFilters ++= Seq(
+  exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific"),
+  exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific$"),
+)
