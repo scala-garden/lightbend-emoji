@@ -3,8 +3,6 @@
  */
 package com.lightbend.emoji
 
-import ScalaVersionSpecific.checkLengths
-
 /**
  * An emoji to shortcode mapping. This is a class that should be declared and used as an implicit
  * value, so that shortcode mappings don't have to be global across an application.
@@ -148,7 +146,7 @@ object ShortCodes {
             try m.group(1).emoji.toString
             catch { case _: EmojiNotFound => m.matched }
         )
-        checkLengths(sc, args)
+        StringContext.checkLengths(args, sc.parts)
         val sb = new java.lang.StringBuilder
         def process(part: String): String = emojify(StringContext.processEscapes(part))
         def partly(part: String): Unit = {
