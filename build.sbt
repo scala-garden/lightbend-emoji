@@ -22,7 +22,7 @@ ThisBuild / versionScheme := Some("early-semver")
 
 /// build
 
-crossScalaVersions := Seq("2.13.18", "3.3.8")
+crossScalaVersions := Seq("2.13.18", "3.9.0")
 scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies ++= Seq(
