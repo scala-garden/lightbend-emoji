@@ -64,4 +64,7 @@ mimaPreviousArtifacts := Set(organization.value %% name.value % "1.3.0")
 mimaBinaryIssueFilters ++= Seq(
   exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific"),
   exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific$"),
+  // Drop once the fix for scala-garden/mima#794 is released.
+  exclude[DirectMissingMethodProblem]("scala.util.parsing.input.OffsetPosition.<clinit>"),
+  exclude[DirectMissingMethodProblem]("com.lightbend.emoji.ShortCodes.<clinit>"),
 )
