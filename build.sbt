@@ -58,7 +58,7 @@ console / initialCommands := {
 
 /// MiMa
 
-import com.typesafe.tools.mima.core._, ProblemFilters._
+import com.typesafe.tools.mima.core.*, ProblemFilters.*
 mimaPreviousArtifacts := Set(organization.value %% name.value % "1.3.0")
 // this can be removed once the reference version is bumped
 mimaBinaryIssueFilters ++= Seq(
