@@ -22,7 +22,7 @@ ThisBuild / versionScheme := Some("early-semver")
 
 /// build
 
-crossScalaVersions := Seq("2.13.18", "3.3.8")
+crossScalaVersions := Seq("2.13.18", "3.9.0")
 scalaVersion := crossScalaVersions.value.head
 
 libraryDependencies ++= Seq(
@@ -31,7 +31,7 @@ libraryDependencies ++= Seq(
   "org.scalameta" %% "munit" % "1.3.6" % Test,
 )
 
-scalacOptions ++= Seq("-release:8", "-unchecked", "-deprecation", "-feature", "-Werror") ++ (
+scalacOptions ++= Seq("-release:17", "-unchecked", "-deprecation", "-feature", "-Werror") ++ (
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, _)) => Seq("-Xlint")
     case _            => Seq.empty
@@ -64,4 +64,7 @@ mimaPreviousArtifacts := Set(organization.value %% name.value % "1.3.0")
 mimaBinaryIssueFilters ++= Seq(
   exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific"),
   exclude[MissingClassProblem]("com.lightbend.emoji.ScalaVersionSpecific$"),
+  // Drop once the fix for scala-garden/mima#794 is released.
+  exclude[DirectMissingMethodProblem]("scala.util.parsing.input.OffsetPosition.<clinit>"),
+  exclude[DirectMissingMethodProblem]("com.lightbend.emoji.ShortCodes.<clinit>"),
 )
