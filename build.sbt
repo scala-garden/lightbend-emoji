@@ -2,10 +2,10 @@
 
 name := "emoji"
 organization := "com.lightbend"
-homepage := Some(url("https://github.com/lightbend/lightbend-emoji"))
-licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+homepage := Some(uri("https://github.com/lightbend/lightbend-emoji"))
+licenses += ("Apache-2.0", uri("https://www.apache.org/licenses/LICENSE-2.0.html"))
 scmInfo := Some(ScmInfo(
-  url("https://github.com/lightbend/lightbend-emoji"),
+  uri("https://github.com/lightbend/lightbend-emoji"),
   "scm:git:git@github.com:lightbend/lightbend-emoji.git"
 ))
 developers := List(
@@ -13,7 +13,7 @@ developers := List(
     id = "Lightbend",
     name = "Lightbend, Inc.",
     email = "",
-    url = url("https://www.lightbend.com")
+    url = uri("https://www.lightbend.com")
   )
 )
 
@@ -58,7 +58,7 @@ console / initialCommands := {
 
 /// MiMa
 
-import com.typesafe.tools.mima.core._, ProblemFilters._
+import com.typesafe.tools.mima.core.*, ProblemFilters.*
 mimaPreviousArtifacts := Set(organization.value %% name.value % "1.3.0")
 // this can be removed once the reference version is bumped
 mimaBinaryIssueFilters ++= Seq(
